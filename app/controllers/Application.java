@@ -15,7 +15,10 @@ public class Application extends Controller {
         return ok(Json.toJson(map));
     }
 
-    public Result getClassifieds() {
+    public Result getAds() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("content", "ads");
 
+        return ok(Json.toJson(map));
     }
 }

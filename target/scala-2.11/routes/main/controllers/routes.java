@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/clenimar/workspace/activator-dist-1.3.6/2gig/conf/routes
-// @DATE:Sun Oct 25 17:55:36 BRT 2015
+// @SOURCE:/home/clenimar/Desktop/workspace/2gig/conf/routes
+// @DATE:Mon Oct 26 14:04:41 BRT 2015
 
 package controllers;
 

@@ -4,7 +4,7 @@
 		module="2gig$sbt_2.11"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20151026013229"
+		publication="20151026131246"
 	/>
 	<configurations>
 		<conf name="default" visibility="public"/>

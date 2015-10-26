@@ -4,7 +4,7 @@
 		module="2gig$sources_2.11"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20151026013233"
+		publication="20151026131326"
 	/>
 	<configurations>
 		<conf name="default" visibility="public" description=""/>
@@ -158,6 +158,9 @@
 		</dependency>
 		<dependency org="org.scala-sbt" name="logic" rev="0.13.8" transitive="false" conf="default->default(compile)">
 			<artifact name="logic" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.scala-sbt" name="compiler-interface" rev="0.13.8" transitive="false" conf="default->default(compile)">
+			<artifact name="compiler-interface" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="org.scala-sbt" name="precompiled-2_8_2" rev="0.13.8" transitive="false" conf="default->default(compile)">
 			<artifact name="precompiled-2_8_2" type="src" ext="jar" conf="sources" e:classifier="sources"/>
@@ -396,6 +399,21 @@
 		<dependency org="org.fusesource.hawtjni" name="hawtjni-runtime" rev="1.8" transitive="false" conf="default->default(compile)">
 			<artifact name="hawtjni-runtime" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
+		<dependency org="org.fusesource.leveldbjni" name="leveldbjni-osx" rev="1.5" transitive="false" conf="default->default(compile)">
+			<artifact name="leveldbjni-osx" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.fusesource.leveldbjni" name="leveldbjni-linux32" rev="1.5" transitive="false" conf="default->default(compile)">
+			<artifact name="leveldbjni-linux32" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.fusesource.leveldbjni" name="leveldbjni-linux64" rev="1.5" transitive="false" conf="default->default(compile)">
+			<artifact name="leveldbjni-linux64" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.fusesource.leveldbjni" name="leveldbjni-win32" rev="1.5" transitive="false" conf="default->default(compile)">
+			<artifact name="leveldbjni-win32" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.fusesource.leveldbjni" name="leveldbjni-win64" rev="1.5" transitive="false" conf="default->default(compile)">
+			<artifact name="leveldbjni-win64" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
 		<dependency org="io.apigee.trireme" name="trireme-core" rev="0.8.5" transitive="false" conf="default->default(compile)">
 			<artifact name="trireme-core" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
@@ -417,23 +435,68 @@
 		<dependency org="com.typesafe" name="npm_2.10" rev="1.1.1" transitive="false" conf="default->default(compile)">
 			<artifact name="npm_2.10" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
+		<dependency org="org.webjars" name="npm" rev="2.11.2" transitive="false" conf="default->default(compile)">
+			<artifact name="npm" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
 		<dependency org="com.typesafe.sbt" name="sbt-coffeescript" rev="1.0.0" transitive="false" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13">
 			<artifact name="sbt-coffeescript" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="coffee-script-node" rev="1.7.1" transitive="false" conf="default->default(compile)">
+			<artifact name="coffee-script-node" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="mkdirp" rev="0.3.5" transitive="false" conf="default->default(compile)">
+			<artifact name="mkdirp" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="com.typesafe.sbt" name="sbt-less" rev="1.0.6" transitive="false" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13">
 			<artifact name="sbt-less" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
+		<dependency org="org.webjars" name="less-node" rev="1.7.5" transitive="false" conf="default->default(compile)">
+			<artifact name="less-node" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="source-map" rev="0.1.31-2" transitive="false" conf="default->default(compile)">
+			<artifact name="source-map" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="amdefine" rev="0.1.0-1" transitive="false" conf="default->default(compile)">
+			<artifact name="amdefine" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="clean-css" rev="2.2.7" transitive="false" conf="default->default(compile)">
+			<artifact name="clean-css" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
 		<dependency org="com.typesafe.sbt" name="sbt-jshint" rev="1.0.3" transitive="false" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13">
 			<artifact name="sbt-jshint" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
+		<dependency org="org.webjars" name="jshint-node" rev="2.4.3" transitive="false" conf="default->default(compile)">
+			<artifact name="jshint-node" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="underscorejs" rev="1.5.2-2" transitive="false" conf="default->default(compile)">
+			<artifact name="underscorejs" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="console-browserify" rev="0.1.6-1" transitive="false" conf="default->default(compile)">
+			<artifact name="console-browserify" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="strip-json-comments" rev="1.0.2-1" transitive="false" conf="default->default(compile)">
+			<artifact name="strip-json-comments" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
 		<dependency org="com.typesafe.sbt" name="sbt-rjs" rev="1.0.7" transitive="false" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13">
 			<artifact name="sbt-rjs" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="rjs" rev="2.1.15" transitive="false" conf="default->default(compile)">
+			<artifact name="rjs" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="com.typesafe.sbt" name="sbt-digest" rev="1.1.0" transitive="false" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13">
 			<artifact name="sbt-digest" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="com.typesafe.sbt" name="sbt-mocha" rev="1.1.0" transitive="false" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13">
 			<artifact name="sbt-mocha" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="mocha" rev="1.17.1" transitive="false" conf="default->default(compile)">
+			<artifact name="mocha" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="debug" rev="0.7.4" transitive="false" conf="default->default(compile)">
+			<artifact name="debug" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.webjars" name="diff" rev="1.0.7" transitive="false" conf="default->default(compile)">
+			<artifact name="diff" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="com.typesafe.sbt" name="sbt-play-enhancer" rev="1.1.0" transitive="false" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13">
 			<artifact name="sbt-play-enhancer" type="src" ext="jar" conf="sources" e:classifier="sources"/>

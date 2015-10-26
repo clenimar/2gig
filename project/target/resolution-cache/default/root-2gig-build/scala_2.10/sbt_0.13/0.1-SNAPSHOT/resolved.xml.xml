@@ -4,7 +4,7 @@
 		module="root-2gig-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20151026014533"
+		publication="20151026131925"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

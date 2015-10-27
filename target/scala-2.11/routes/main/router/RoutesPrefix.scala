@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/clenimar/Desktop/workspace/2gig/conf/routes
-// @DATE:Mon Oct 26 14:04:41 BRT 2015
+// @SOURCE:/home/clenimar/workspace/2gig/conf/routes
+// @DATE:Mon Oct 26 22:01:25 BRT 2015
 
 
 package router {

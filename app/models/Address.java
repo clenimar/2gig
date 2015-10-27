@@ -15,18 +15,14 @@ public class Address {
     private String city;
     private String state;
     private String country;
-    private String code;
 
-    public Address(String street, String number, String neighbourhood, String city, String state, String country,
-                   String code) {
+    public Address(String street, String number, String neighbourhood, String city, String state, String country) {
         this.street = street;
         this.number = number;
         this.neighbourhood = neighbourhood;
         this.city = city;
         this.state = state;
-        this.country = country;
-        this.code = code;
-    }
+        this.country = country;}
 
     public long getId() {
         return id;
@@ -82,13 +78,5 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 }

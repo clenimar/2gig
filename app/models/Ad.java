@@ -1,29 +1,46 @@
 package models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 public class Ad {
     @Id
     @GeneratedValue
     private long id;
-
+    @Column
+    private String author;
+    @Column
+    private Address address;
+    @Column
     private String title;
+    @Column
     private String description;
-    private List<Instrument> visibleInstruments;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Instrument> instruments;
+    @Column
     private List<String> desiredStyles;
-    private List<String> undesirebaleStyles;
+    @Column
+    private List<String> undesiredStyles;
+    @Column
     private int casualOrBand;
+    @Column
+    private String passwd;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Contact contact;
 
-    public Ad(String title, String description, List<Instrument> visibleInstruments, List<String> desiredStyles,
-              List<String> undesirebaleStyles, int casualOrBand) {
+    public Ad(String author, String title, String description, Address address, Contact contact,
+              List<Instrument> visibleInstruments, List<String> desiredStyles, List<String> undesiredStyles,
+              int casualOrBand, String passwd) {
+        this.author = author;
         this.title = title;
         this.description = description;
-        this.visibleInstruments = visibleInstruments;
+        this.address = address;
+        this.instruments = visibleInstruments;
         this.desiredStyles = desiredStyles;
-        this.undesirebaleStyles = undesirebaleStyles;
+        this.undesiredStyles = undesiredStyles;
         this.casualOrBand = casualOrBand;
+        this.passwd = passwd;
+        this.contact = contact;
     }
 
     public long getId() {
@@ -42,12 +59,12 @@ public class Ad {
         this.title = title;
     }
 
-    public List<Instrument> getVisibleInstruments() {
-        return visibleInstruments;
+    public List<Instrument> getInstruments() {
+        return instruments;
     }
 
-    public void setVisibleInstruments(List<Instrument> visibleInstruments) {
-        this.visibleInstruments = visibleInstruments;
+    public void setInstruments(List<Instrument> instruments) {
+        this.instruments = instruments;
     }
 
     public String getDescription() {
@@ -66,12 +83,12 @@ public class Ad {
         this.desiredStyles = desiredStyles;
     }
 
-    public List<String> getUndesirebaleStyles() {
-        return undesirebaleStyles;
+    public List<String> getUndesiredStyles() {
+        return undesiredStyles;
     }
 
-    public void setUndesirebaleStyles(List<String> undesirebaleStyles) {
-        this.undesirebaleStyles = undesirebaleStyles;
+    public void setUndesiredStyles(List<String> undesiredStyles) {
+        this.undesiredStyles = undesiredStyles;
     }
 
     public int getCasualOrBand() {
@@ -80,5 +97,37 @@ public class Ad {
 
     public void setCasualOrBand(int casualOrBand) {
         this.casualOrBand = casualOrBand;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }

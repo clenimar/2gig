@@ -1,7 +1,11 @@
 package models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Contact")
 public class Contact {
     @Column
     private String email;
@@ -12,7 +16,12 @@ public class Contact {
     @Column
     private String phone2;
 
+    public Contact(){
+
+    }
+
     public Contact(String email, String phone1) {
+        this();
         this.email = email;
         this.phone1 = phone1;
     }

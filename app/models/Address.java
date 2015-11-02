@@ -1,28 +1,40 @@
 package models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Address")
 public class Address {
 
     @Id
     @GeneratedValue
     private long id;
-
+    @Column
     private String street;
+    @Column
     private String number;
+    @Column
     private String neighbourhood;
+    @Column
     private String city;
+    @Column
     private String state;
+    @Column
     private String country;
 
+    public Address() {
+
+    }
+
     public Address(String street, String number, String neighbourhood, String city, String state, String country) {
+        this();
         this.street = street;
         this.number = number;
         this.neighbourhood = neighbourhood;
         this.city = city;
         this.state = state;
-        this.country = country;}
+        this.country = country;
+    }
 
     public long getId() {
         return id;

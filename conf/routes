@@ -3,8 +3,13 @@
 # ~~~~
 
 # Home page
-GET        /                    controllers.Application.index()
+GET        /                    controllers.Assets.at(path="/public", file="index.html")
+# RESTful API:
 GET        /api/ads             controllers.Application.getAds()
+POST       /api/ads             controllers.Application.createAds()
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+
+# Play routes serving HTML to AngularJS start with /views
+GET     /views/*file                controllers.Assets.versioned(path="/public/views/", file: Asset)

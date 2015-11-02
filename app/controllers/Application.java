@@ -27,13 +27,26 @@ public class Application extends Controller {
         return ok(Json.toJson(map));
     }
 
+    /**
+     * Return all the advertisements
+     */
+    @play.db.jpa.Transactional
     public Result getAds() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("content", "ads");
-
+        List<Ad> queryResult = db.findAllByClass(Ad.class);
+        HashMap<String, Ad> map = new HashMap<>();
+        if (queryResult == null) {
+            return ok(Json.toJson(map));
+        }
+        for (Ad ad : queryResult) {
+            map.put(String.valueOf(ad.getId()), ad);
+        }
         return ok(Json.toJson(map));
     }
 
+    /**
+     * Create a new advertisement
+     */
+    @play.db.jpa.Transactional
     public Result createAds() {
         JsonNode json = request().body().asJson();
 
@@ -80,8 +93,10 @@ public class Application extends Controller {
         Ad ad = new Ad(author, title, description, address, contact, instruments,
                 desiredStyles, undesiredStyles, interest, passwd);
 
-        if (db.persist(ad))
+        if (db.persist(ad)) {
+            db.flush();
             return created(successMsg(CREATED));
+        }
 
         return internalServerError();
     }

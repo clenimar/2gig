@@ -3,6 +3,8 @@ package models;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "Ad")
 public class Ad {
     @Id
     @GeneratedValue
@@ -28,9 +30,13 @@ public class Ad {
     @ManyToMany(cascade = CascadeType.ALL)
     private Contact contact;
 
+    public Ad(){
+    }
+
     public Ad(String author, String title, String description, Address address, Contact contact,
               List<Instrument> visibleInstruments, List<String> desiredStyles, List<String> undesiredStyles,
               int casualOrBand, String passwd) {
+        this();
         this.author = author;
         this.title = title;
         this.description = description;

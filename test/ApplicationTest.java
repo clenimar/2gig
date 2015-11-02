@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import controllers.Application;
 import org.junit.*;
 
 import play.mvc.*;
@@ -16,9 +17,10 @@ import play.libs.F;
 import play.libs.F.*;
 import play.twirl.api.Content;
 
+import javax.persistence.EntityManager;
+
 import static play.test.Helpers.*;
 import static org.junit.Assert.*;
-
 
 /**
 *
@@ -27,6 +29,9 @@ import static org.junit.Assert.*;
 *
 */
 public class ApplicationTest {
+
+    Result result;
+    EntityManager em;
 
     @Test
     public void simpleCheck() {

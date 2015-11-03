@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -8,44 +9,54 @@ public class Ad {
     @Id
     @GeneratedValue
     private long id;
-
+    // basic ad info:
     private String author;
-    @ManyToOne
-    private Address address;
-
     private String title;
-
     private String description;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Instrument> instruments;
+    // address info:
+    private String street;
+    private String number;
+    private String neighbourhood;
+    private String city;
+    private String state;
+    private String country;
+    @ElementCollection
+    private List<String> instruments;
     @ElementCollection
     private List<String> desiredStyles;
     @ElementCollection
     private List<String> undesiredStyles;
-
     private int casualOrBand;
-
     private String passwd;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Contact contact;
+
+    private String email;
+    private String facebook;
+    private String phone;
 
     public Ad(){
     }
 
-    public Ad(String author, String title, String description, Address address, Contact contact,
-              List<Instrument> visibleInstruments, List<String> desiredStyles, List<String> undesiredStyles,
+    public Ad(String author, String title, String description, String street, String number, String neighbourhood,
+              String city, String state, String country, String email, String phone,
+              List<String> instruments, List<String> desiredStyles, List<String> undesiredStyles,
               int casualOrBand, String passwd) {
         this();
         this.author = author;
         this.title = title;
         this.description = description;
-        this.address = address;
-        this.instruments = visibleInstruments;
+        this.instruments = instruments;
         this.desiredStyles = desiredStyles;
         this.undesiredStyles = undesiredStyles;
         this.casualOrBand = casualOrBand;
         this.passwd = passwd;
-        this.contact = contact;
+        this.street = street;
+        this.number = number;
+        this.neighbourhood = neighbourhood;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.email = email;
+        this.phone = phone;
     }
 
     public long getId() {
@@ -64,11 +75,11 @@ public class Ad {
         this.title = title;
     }
 
-    public List<Instrument> getInstruments() {
+    public List<String> getInstruments() {
         return instruments;
     }
 
-    public void setInstruments(List<Instrument> instruments) {
+    public void setInstruments(List<String> instruments) {
         this.instruments = instruments;
     }
 
@@ -112,14 +123,6 @@ public class Ad {
         this.author = author;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public String getPasswd() {
         return passwd;
     }
@@ -128,11 +131,75 @@ public class Ad {
         this.passwd = passwd;
     }
 
-    public Contact getContact() {
-        return contact;
+    public String getStreet() {
+        return street;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getNeighbourhood() {
+        return neighbourhood;
+    }
+
+    public void setNeighbourhood(String neighbourhood) {
+        this.neighbourhood = neighbourhood;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

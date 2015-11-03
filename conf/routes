@@ -4,6 +4,7 @@
 
 # Home page
 GET        /                    controllers.Assets.at(path="/public", file="index.html")
+GET        /new                 controllers.Assets.at(path="/public", file="new.html")
 # RESTful API:
 GET        /api/ads             controllers.Application.getAds()
 POST       /api/ads             controllers.Application.createAds()

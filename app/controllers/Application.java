@@ -57,29 +57,47 @@ public class Application extends Controller {
         String title = json.get("title").asText();
         String description = json.get("description").asText();
 
-        Address address = new Address(
-                json.get("street").asText(),
-                json.get("number").asText(),
-                json.get("neighbourhood").asText(),
-                json.get("city").asText(),
-                json.get("state").asText(),
-                json.get("country").asText()
-        );
+//        Address address = new Address(
+//                json.get("street").asText(),
+//                json.get("number").asText(),
+//                json.get("neighbourhood").asText(),
+//                json.get("city").asText(),
+//                json.get("state").asText(),
+//                json.get("country").asText()
+//        );
+//
+//        Contact contact = new Contact(
+//                json.get("email").asText(),
+//                json.get("phone1").asText()
+//        );
 
-        Contact contact = new Contact(
-                json.get("email").asText(),
-                json.get("phone1").asText()
-        );
+//
+//
+//        if (json.has("facebook_url"))
+//            contact.setFacebookUrl(json.get("facebook_url").asText());
+//        if (json.has("phone2"))
+//            contact.setPhone2(json.get("phone2").asText());
+//
+//        List<Instrument> instruments = new ArrayList<>();
+//        for (JsonNode instrumentName : json.get("instrument")) {
+//            instruments.add(new Instrument(instrumentName.asText()));
+//        }
 
-        if (json.has("facebook_url"))
-            contact.setFacebookUrl(json.get("facebook_url").asText());
-        if (json.has("phone2"))
-            contact.setPhone2(json.get("phone2").asText());
+        String street = json.get("street").asText();
+        String number = json.get("number").asText();
+        String neighbourhood = json.get("neighbourhood").asText();
+        String city = json.get("city").asText();
+        String state = json.get("state").asText();
+        String country = json.get("country").asText();
 
-        List<Instrument> instruments = new ArrayList<>();
-        for (JsonNode instrumentName : json.get("instrument")) {
-            instruments.add(new Instrument(instrumentName.asText()));
+        String email = json.get("email").asText();
+        String phone = json.get("phone1").asText();
+
+        List<String> instruments = new ArrayList<>();
+        for (String instrument : json.get("instrument").asText().split(",")) {
+            instruments.add(instrument);
         }
+
         List<String> desiredStyles = new ArrayList<>();
         for (JsonNode styleName : json.get("desired_styles")) {
             desiredStyles.add(styleName.asText());
@@ -90,7 +108,8 @@ public class Application extends Controller {
         }
         int interest = json.get("interest").asInt();
         String passwd = DigestUtils.sha1Hex(json.get("passwd").asText());
-        Ad ad = new Ad(author, title, description, address, contact, instruments,
+        Ad ad = new Ad(author, title, description, street, number, neighbourhood,
+                city, state, country, email, phone, instruments,
                 desiredStyles, undesiredStyles, interest, passwd);
 
         if (db.persist(ad)) {

@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>create</title>
+    <title>index</title>
+    <script src= "/assets/javascripts/external/angular.min.js" type="text/javascript"></script>
+    <script src= "/assets/javascripts/external/angular-route.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/app.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/controllers/main.js" type="text/javascript"></script>
 </head>
-<body>
+<body ng-app="2GIG">
+<div ng-controller="MainCtrl">
+    {{content}}
     <form id="create_form">
         <input type="text" id="author" name="author" placeholder="Name" />
         <input type="text" id="title" name="title" placeholder="Ad title" />
         <input type="text" id="description" name="description" placeholder="Description" />
 
-        <input type="text" id="street" name="street" placeholder="Street name" />
+        <input type="text" id="street" name="street" placeholder="Street name" ng-model="content"/>
         <input type="text" id="number" name="number" placeholder="Number" />
         <input type="text" id="neighbourhood" name="neighbourhood" placeholder="Neighbourhood" />
         <input type="text" id="city" name="city" placeholder="City" />
@@ -30,5 +36,6 @@
         <button type="submit" form="create_form" value="Send" id="send">Send</button>
 
     </form>
+</div>
 </body>
 </html>

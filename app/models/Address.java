@@ -3,23 +3,17 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Address")
 public class Address {
 
     @Id
     @GeneratedValue
     private long id;
-    @Column
+
     private String street;
-    @Column
     private String number;
-    @Column
     private String neighbourhood;
-    @Column
     private String city;
-    @Column
     private String state;
-    @Column
     private String country;
 
     public Address() {

@@ -1,19 +1,17 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "Contact")
 public class Contact {
-    @Column
+
+    @Id
+    @GeneratedValue
+    private long id;
+
     private String email;
-    @Column
     private String facebookUrl;
-    @Column
     private String phone1;
-    @Column
     private String phone2;
 
     public Contact(){

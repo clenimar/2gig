@@ -4,30 +4,29 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Ad")
 public class Ad {
     @Id
     @GeneratedValue
     private long id;
-    @Column
+
     private String author;
-    @Column
+    @ManyToOne
     private Address address;
-    @Column
+
     private String title;
-    @Column
+
     private String description;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Instrument> instruments;
-    @Column
+    @ElementCollection
     private List<String> desiredStyles;
-    @Column
+    @ElementCollection
     private List<String> undesiredStyles;
-    @Column
+
     private int casualOrBand;
-    @Column
+
     private String passwd;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Contact contact;
 
     public Ad(){

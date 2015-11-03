@@ -2,9 +2,6 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Ad;
-import models.Address;
-import models.Contact;
-import models.Instrument;
 import org.apache.commons.codec.digest.DigestUtils;
 import play.libs.Json;
 import play.mvc.*;
@@ -56,40 +53,12 @@ public class Application extends Controller {
         String author = json.get("author").asText();
         String title = json.get("title").asText();
         String description = json.get("description").asText();
-
-//        Address address = new Address(
-//                json.get("street").asText(),
-//                json.get("number").asText(),
-//                json.get("neighbourhood").asText(),
-//                json.get("city").asText(),
-//                json.get("state").asText(),
-//                json.get("country").asText()
-//        );
-//
-//        Contact contact = new Contact(
-//                json.get("email").asText(),
-//                json.get("phone1").asText()
-//        );
-
-//
-//
-//        if (json.has("facebook_url"))
-//            contact.setFacebookUrl(json.get("facebook_url").asText());
-//        if (json.has("phone2"))
-//            contact.setPhone2(json.get("phone2").asText());
-//
-//        List<Instrument> instruments = new ArrayList<>();
-//        for (JsonNode instrumentName : json.get("instrument")) {
-//            instruments.add(new Instrument(instrumentName.asText()));
-//        }
-
         String street = json.get("street").asText();
         String number = json.get("number").asText();
         String neighbourhood = json.get("neighbourhood").asText();
         String city = json.get("city").asText();
         String state = json.get("state").asText();
         String country = json.get("country").asText();
-
         String email = json.get("email").asText();
         String phone = json.get("phone1").asText();
 

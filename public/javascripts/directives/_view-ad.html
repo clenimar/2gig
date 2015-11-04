@@ -1,0 +1,42 @@
+<!-- Modal Structure -->
+<div id="newAd" class="modal">
+    <div class="modal-content">
+        <h4>Anuncia aí, moral!</h4>
+        <div ng-controller="NewAdCtrl" class="col s8 offset-s2">
+            {{new}}
+            <form id="create_form" ng-submit="newAds()">
+                <input type="text" id="author" name="author" placeholder="Name" ng-model="new.author" />
+                <input type="text" id="title" name="title" placeholder="Ad title" ng-model="new.title" />
+                <input type="text" id="description" name="description" placeholder="Description" ng-model="new.description" />
+
+                <input type="text" id="street" name="street" placeholder="Street name" ng-model="new.street" />
+                <input type="text" id="number" name="number" placeholder="Number" ng-model="new.number" />
+                <input type="text" id="neighbourhood" name="neighbourhood" placeholder="Neighbourhood" ng-model="new.neighbourhood" />
+                <input type="text" id="city" name="city" placeholder="City" ng-model="new.city" />
+                <input type="text" id="state" name="state" placeholder="State" ng-model="new.state" />
+                <input type="text" id="country" name="country" placeholder="Country" ng-model="new.country" />
+
+                <input type="email" id="email" name="email" placeholder="E-mail" ng-model="new.email" />
+                <input type="text" id="phone1" name="phone1" placeholder="Phone number" ng-model="new.phone1" />
+
+                <input type="text" id="instrument" name="instrument" placeholder="Instrument" ng-model="new.instrument" />
+                <input type="text" id="desired_styles" name="desired_styles" placeholder="What styles you wanna play" ng-model="new.desired_styles" />
+                <input type="text" id="undesired_styles" name="undesired_styles" placeholder="What styles you DONT wanna play" ng-model="new.undesired_styles" />
+
+                <!--<select form="create_form" name="interest" id="interest" ng-model="new.interest">
+                    <option value="casual">Tocar casualmente</option>
+                    <option value="band">Tocar numa banda</option>
+                    <option value="whatever">Tanto faz</option>
+                </select>-->
+
+                <input type="text" id="interest" name="interest" placeholder="Banda ou casual?" ng-model="new.interest" />
+
+                <input type="text" id="passwd" name="passwd" placeholder="Pass" ng-model="new.passwd" />
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input class="btn modal-action modal-close" type="submit" form="create_form" value="Send" id="send" />
+        <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>-->
+    </div>
+</div>

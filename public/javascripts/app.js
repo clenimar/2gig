@@ -8,15 +8,15 @@
         .config(function($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: 'views/index.html',
+                    templateUrl: '../index.html',
                     controller: 'MainCtrl'
                 })
                 .when('/new', {
-                    tempalteUrl: 'views/new.html',
+                    tempalteUrl: '../new.html',
                     controller: 'NewAdCtrl'
                 })
                 .when('/view/:adId', {
-                    templateUrl: 'views/view.html',
+                    templateUrl: '../view.html',
                     controller: 'ViewAdCtrl'
                 })
                 .otherwise({

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,7 @@ public class Ad {
     private String title;
     private String description;
     private String interest;
+    private long when;
     // address info:
     private String street;
     private String number;
@@ -58,6 +60,7 @@ public class Ad {
         this.country = country;
         this.email = email;
         this.phone = phone;
+        this.when = Calendar.getInstance().getTimeInMillis();
     }
 
     public long getId() {
@@ -202,5 +205,13 @@ public class Ad {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public long getWhen() {
+        return when;
+    }
+
+    public void setWhen(long when) {
+        this.when = when;
     }
 }

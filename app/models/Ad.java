@@ -1,7 +1,6 @@
 package models;
 
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -9,10 +8,11 @@ public class Ad {
     @Id
     @GeneratedValue
     private long id;
-    // basic ad info:
+    // ad info:
     private String author;
     private String title;
     private String description;
+    private String interest;
     // address info:
     private String street;
     private String number;
@@ -20,18 +20,19 @@ public class Ad {
     private String city;
     private String state;
     private String country;
+    // contact info:
+    private String email;
+    private String facebook;
+    private String phone;
+    // misc:
     @ElementCollection
     private List<String> instruments;
     @ElementCollection
     private List<String> desiredStyles;
     @ElementCollection
     private List<String> undesiredStyles;
-    private int casualOrBand;
+    // security:
     private String passwd;
-
-    private String email;
-    private String facebook;
-    private String phone;
 
     public Ad(){
     }
@@ -39,7 +40,7 @@ public class Ad {
     public Ad(String author, String title, String description, String street, String number, String neighbourhood,
               String city, String state, String country, String email, String phone,
               List<String> instruments, List<String> desiredStyles, List<String> undesiredStyles,
-              int casualOrBand, String passwd) {
+              String interest, String passwd) {
         this();
         this.author = author;
         this.title = title;
@@ -47,7 +48,7 @@ public class Ad {
         this.instruments = instruments;
         this.desiredStyles = desiredStyles;
         this.undesiredStyles = undesiredStyles;
-        this.casualOrBand = casualOrBand;
+        this.interest = interest;
         this.passwd = passwd;
         this.street = street;
         this.number = number;
@@ -107,12 +108,12 @@ public class Ad {
         this.undesiredStyles = undesiredStyles;
     }
 
-    public int getCasualOrBand() {
-        return casualOrBand;
+    public String getInterest() {
+        return interest;
     }
 
-    public void setCasualOrBand(int casualOrBand) {
-        this.casualOrBand = casualOrBand;
+    public void setInterest(String interest) {
+        this.interest = interest;
     }
 
     public String getAuthor() {

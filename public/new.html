@@ -51,7 +51,14 @@
         <input type="text" id="desired_styles" name="desired_styles" placeholder="What styles you wanna play" ng-model="new.desired_styles" />
         <input type="text" id="undesired_styles" name="undesired_styles" placeholder="What styles you DONT wanna play" ng-model="new.undesired_styles" />
 
-        <input type="number" id="interest" name="interest" placeholder="Casual or Band?" ng-model="new.interest" />
+        <!--<select form="create_form" name="interest" id="interest" ng-model="new.interest">
+            <option value="casual">Tocar casualmente</option>
+            <option value="band">Tocar numa banda</option>
+            <option value="whatever">Tanto faz</option>
+        </select>-->
+
+        <input type="text" id="interest" name="interest" placeholder="Banda ou casual?" ng-model="new.interest" />
+
         <input type="text" id="passwd" name="passwd" placeholder="Pass" ng-model="new.passwd" />
 
         <input type="submit" form="create_form" value="Send" id="send" />

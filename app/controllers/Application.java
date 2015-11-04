@@ -68,15 +68,18 @@ public class Application extends Controller {
         }
 
         List<String> desiredStyles = new ArrayList<>();
-        for (JsonNode styleName : json.get("desired_styles")) {
-            desiredStyles.add(styleName.asText());
+        for (String style : json.get("desired_styles").asText().split(",")) {
+            desiredStyles.add(style);
         }
+
         List<String> undesiredStyles = new ArrayList<>();
-        for (JsonNode styleName : json.get("undesired_styles")) {
-            undesiredStyles.add(styleName.asText());
+        for (String style : json.get("undesired_styles").asText().split(",")) {
+            undesiredStyles.add(style);
         }
-        int interest = json.get("interest").asInt();
+
+        String interest = json.get("interest").asText();
         String passwd = DigestUtils.sha1Hex(json.get("passwd").asText());
+
         Ad ad = new Ad(author, title, description, street, number, neighbourhood,
                 city, state, country, email, phone, instruments,
                 desiredStyles, undesiredStyles, interest, passwd);

@@ -2,16 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
-    <script src= "/assets/javascripts/external/angular.min.js" type="text/javascript"></script>
-    <script src= "/assets/javascripts/external/angular-route.js" type="text/javascript"></script>
-    <script src="/assets/javascripts/app.js" type="text/javascript"></script>
-    <script src="/assets/javascripts/controllers/new.js" type="text/javascript"></script>
+    <title>new</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/stylesheets/materialize.css" type="text/css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css" type="text/css">
 </head>
-<body ng-app="2GIG">
-<div ng-controller="NewAdCtrl">
+<body ng-app="2GIG" class="blue-grey lighten-5">
+<div class="row">
+    <div class="navbar-fixed">
+        <nav class="indigo darken-4">
+            <div class="nav-wrapper col s8 offset-s2">
+                <div class="col s4 left">
+                    <a href="/" class="brand-logo">2GIG</a>
+                </div>
+                <div class="col s4 right">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" placeholder="Pesquisar anúncios" required>
+                            <label for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+<div ng-controller="NewAdCtrl" class="col s8 offset-s2">
     {{new}}
-    <form id="create_form">
+    <form id="create_form" ng-submit="newAds()">
         <input type="text" id="author" name="author" placeholder="Name" ng-model="new.author" />
         <input type="text" id="title" name="title" placeholder="Ad title" ng-model="new.title" />
         <input type="text" id="description" name="description" placeholder="Description" ng-model="new.description" />
@@ -33,9 +54,25 @@
         <input type="number" id="interest" name="interest" placeholder="Casual or Band?" ng-model="new.interest" />
         <input type="text" id="passwd" name="passwd" placeholder="Pass" ng-model="new.passwd" />
 
-        <button type="submit" form="create_form" value="Send" id="send" ng-click="newAds()">Send</button>
+        <input type="submit" form="create_form" value="Send" id="send" />
 
     </form>
 </div>
+<footer class="page-footer col s8 offset-s2 blue-grey lighten-5">
+    <div class="footer-copyright black-text">
+        <div class="container center">
+            2GIG (cc) Alguns direitos reservados.
+        </div>
+    </div>
+</footer>
+</div>
+
+<!-- imports -->
+<script src= "/assets/javascripts/external/angular.min.js" type="text/javascript"></script>
+<script src= "/assets/javascripts/external/angular-route.js" type="text/javascript"></script>
+<script src="/assets/javascripts/app.js" type="text/javascript"></script>
+<script src="/assets/javascripts/controllers/new.js" type="text/javascript"></script>
+<script src="/assets/javascripts/external/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="/assets/javascripts/external/materialize.js" type="text/javascript"></script>
 </body>
 </html>

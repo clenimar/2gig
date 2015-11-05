@@ -16,7 +16,7 @@
                     })
                     .error(function() {
                         console.log("error while trying to post content...");
-                        Materialize.toast("Ops! Algo deu errado :(", 4000);
+                        Materialize.toast("Ops! Algo deu errado. Verifique as informações e tente novamente. :(", 4000);
                     });
             };
         })

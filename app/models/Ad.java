@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -41,7 +42,7 @@ public class Ad {
     }
 
     public Ad(String author, String title, String description, String street, String number, String neighbourhood,
-              String city, String state, String email, String phone,
+              String city, String state, HashMap<String, String> contact,
               List<String> instruments, List<String> desiredStyles, List<String> undesiredStyles,
               String interest, String passwd) {
         this();
@@ -58,10 +59,18 @@ public class Ad {
         this.neighbourhood = neighbourhood;
         this.city = city;
         this.state = state;
-        this.email = email;
-        this.phone = phone;
         this.when = Calendar.getInstance().getTimeInMillis();
         this.closed = false;
+        setContact(contact);
+    }
+
+    private void setContact(HashMap<String, String> contact) {
+        if (contact.containsKey("email"))
+            this.email = contact.get("email");
+        if (contact.containsKey("facebook"))
+            this.facebook = contact.get("facebook");
+        if (contact.containsKey("phone1"))
+            this.phone = contact.get("phone1");
     }
 
     public long getId() {

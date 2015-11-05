@@ -82,6 +82,11 @@ public class Application extends Controller {
         if (json == null)
             return badRequest();
 
+        List<String> desiredStyles = new ArrayList<>();
+        List<String> undesiredStyles = new ArrayList<>();
+        List<String> instruments = new ArrayList<>();
+        HashMap<String, String> contact = new HashMap<>();
+
         String author = json.get("author").asText();
         String title = json.get("title").asText();
         String description = json.get("description").asText();
@@ -90,29 +95,37 @@ public class Application extends Controller {
         String neighbourhood = json.get("neighbourhood").asText();
         String city = json.get("city").asText();
         String state = json.get("state").asText();
-        String email = json.get("email").asText();
-        String phone = json.get("phone1").asText();
 
-        List<String> instruments = new ArrayList<>();
-        for (String instrument : json.get("instrument").asText().split(",")) {
+        if (json.has("email"))
+            contact.put("email", json.get("email").asText());
+
+        if (json.has("phone1"))
+            contact.put("phone1", json.get("phone1").asText());
+
+        if (json.has("facebook"))
+            contact.put("facebook", json.get("facebook").asText());
+
+        for (String instrument : json.get("instrument").asText().split(","))
             instruments.add(instrument);
+
+        if (json.has("desired_styles")) {
+            for (String style : json.get("desired_styles").asText().split(","))
+                desiredStyles.add(style);
         }
 
-        List<String> desiredStyles = new ArrayList<>();
-        for (String style : json.get("desired_styles").asText().split(",")) {
-            desiredStyles.add(style);
-        }
-
-        List<String> undesiredStyles = new ArrayList<>();
-        for (String style : json.get("undesired_styles").asText().split(",")) {
-            undesiredStyles.add(style);
+        if (json.has("undesired_styles")) {
+            for (String style : json.get("undesired_styles").asText().split(","))
+                undesiredStyles.add(style);
         }
 
         String interest = json.get("interest").asText();
         String passwd = DigestUtils.sha1Hex(json.get("passwd").asText());
 
+        if (!isContactValid(contact))
+            return badRequest();
+
         Ad ad = new Ad(author, title, description, street, number, neighbourhood,
-                city, state,  email, phone, instruments,
+                city, state, contact, instruments,
                 desiredStyles, undesiredStyles, interest, passwd);
 
         if (db.persist(ad)) {
@@ -146,5 +159,13 @@ public class Application extends Controller {
         map.put("message", "Success!");
         map.put("status", String.valueOf(status));
         return (Json.toJson(map));
+    }
+
+    private boolean isContactValid(HashMap<String, String> contact) {
+        for (String info : contact.values()) {
+            if (info != null && !info.isEmpty())
+                return true;
+        }
+        return false;
     }
 }

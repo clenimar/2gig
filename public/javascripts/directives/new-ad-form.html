@@ -16,11 +16,12 @@
                         <label for="description">Fale um pouco mais sobre o que você procura</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="desired_styles" type="text" name="desired_styles" form="create_form" class="validate" ng-model="new.desired_styles" required>
+                        <input id="desired_styles" type="text" name="desired_styles" form="create_form" class="validate" ng-model="new.desired_styles">
                         <label for="desired_styles">Estilos que você gostaria de tocar</label>
                     </div>
+                    {{new}}
                     <div class="input-field col s6">
-                        <input id="undesired_styles" type="text" name="undesired_styles" form="create_form" class="validate" ng-model="new.undesired_styles" required>
+                        <input id="undesired_styles" type="text" name="undesired_styles" form="create_form" class="validate" ng-model="new.undesired_styles">
                         <label for="undesired_styles">Estilos que você não gostaria de tocar</label>
                     </div>
                     <div class="input-field col s6">
@@ -37,12 +38,12 @@
                     </div>
                     <div class="input-field col s4">
                         <input id="email" type="email" name="email" class="validate"
-                               ng-model="new.email" form="create_form" required>
+                               ng-model="new.email" form="create_form">
                         <label for="email">Seu e-mail</label>
                     </div>
                     <div class="input-field col s4">
                         <input id="phone1" type="text" name="phone1" class="validate"
-                               ng-model="new.phone1" form="create_form" required>
+                               ng-model="new.phone1" form="create_form">
                         <label for="phone1">Telefone</label>
                     </div>
                     <div class="input-field col s3">

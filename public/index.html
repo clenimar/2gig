@@ -38,7 +38,7 @@
             <span ng-show="noAd">
             {{noAdFoundMessage}}
             </span>
-            <div class="col s6" ng-repeat="ad in content">
+            <div class="col s6" ng-repeat="ad in content | orderBy: '-when'">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                         <span class="card-title">{{ad.title}}

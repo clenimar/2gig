@@ -15,20 +15,33 @@ public class Application extends Controller {
 
     private static final GenericDAO db = new GenericDAO();
 
+//    /**
+//     * Return all the active advertisements
+//     */
+//    @play.db.jpa.Transactional
+//    public Result getActiveAds() {
+//        List<Ad> queryResult = db.findByAttributeName("Ad", "closed", "false");
+//        HashMap<String, Ad> map = new HashMap<>();
+//        if (queryResult == null)
+//            return ok(Json.toJson(map));
+//
+//        for (Ad ad : queryResult)
+//            map.put(String.valueOf(ad.getId()), ad);
+//
+//        return ok(Json.toJson(map));
+//    }
+
     /**
      * Return all the active advertisements
      */
     @play.db.jpa.Transactional
     public Result getActiveAds() {
         List<Ad> queryResult = db.findByAttributeName("Ad", "closed", "false");
-        HashMap<String, Ad> map = new HashMap<>();
+
         if (queryResult == null)
-            return ok(Json.toJson(map));
+            return ok(Json.toJson(queryResult));
 
-        for (Ad ad : queryResult)
-            map.put(String.valueOf(ad.getId()), ad);
-
-        return ok(Json.toJson(map));
+        return ok(Json.toJson(queryResult));
     }
 
     /**

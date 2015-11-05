@@ -1,8 +1,8 @@
 <!-- Modal Structure -->
 <div id="newAd" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" ng-controller="NewAdCtrl">
         <h4>Anuncia aí, moral!</h4>
-        <div ng-controller="NewAdCtrl" class="col s8 offset-s2">
+        <div class="col s8 offset-s2">
             <div class="row">
                 <div class="col s12">
                     <form id="create_form" ng-submit="newAds()"></form>

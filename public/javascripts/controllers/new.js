@@ -11,8 +11,8 @@
                     .success(function() {
                         Materialize.toast("Anúncio criado com sucesso :)", 4000);
                         console.log("deu certo, moral!");
-                        // fechar modal
                         $scope.new = {};
+                        $window.location = '/';
                     })
                     .error(function() {
                         console.log("error while trying to post content...");

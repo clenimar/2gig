@@ -2,12 +2,14 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+# Application home:
 GET        /                    controllers.Assets.at(path="/public", file="index.html")
-GET        /new                 controllers.Assets.at(path="/public", file="new.html")
+
 # RESTful API:
-GET        /api/ads             controllers.Application.getAds()
+GET        /api/ads             controllers.Application.getActiveAds()
 POST       /api/ads             controllers.Application.createAds()
+POST       /api/ads/closed/:id  controllers.Application.closeAds(id: Long)
+GET        /api/ads/closed      controllers.Application.getCountClosed()
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)

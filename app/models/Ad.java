@@ -21,7 +21,6 @@ public class Ad {
     private String neighbourhood;
     private String city;
     private String state;
-    private String country;
     // contact info:
     private String email;
     private String facebook;
@@ -35,12 +34,14 @@ public class Ad {
     private List<String> undesiredStyles;
     // security:
     private String passwd;
+    // status:
+    private boolean closed;
 
     public Ad(){
     }
 
     public Ad(String author, String title, String description, String street, String number, String neighbourhood,
-              String city, String state, String country, String email, String phone,
+              String city, String state, String email, String phone,
               List<String> instruments, List<String> desiredStyles, List<String> undesiredStyles,
               String interest, String passwd) {
         this();
@@ -57,10 +58,10 @@ public class Ad {
         this.neighbourhood = neighbourhood;
         this.city = city;
         this.state = state;
-        this.country = country;
         this.email = email;
         this.phone = phone;
         this.when = Calendar.getInstance().getTimeInMillis();
+        this.closed = false;
     }
 
     public long getId() {
@@ -175,14 +176,6 @@ public class Ad {
         this.state = state;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -213,5 +206,13 @@ public class Ad {
 
     public void setWhen(long when) {
         this.when = when;
+    }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void close() {
+        this.closed = true;
     }
 }

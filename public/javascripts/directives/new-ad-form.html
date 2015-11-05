@@ -3,40 +3,86 @@
     <div class="modal-content">
         <h4>Anuncia aí, moral!</h4>
         <div ng-controller="NewAdCtrl" class="col s8 offset-s2">
-            {{new}}
-            <form id="create_form" ng-submit="newAds()">
-                <input type="text" id="author" name="author" placeholder="Name" ng-model="new.author" />
-                <input type="text" id="title" name="title" placeholder="Ad title" ng-model="new.title" />
-                <input type="text" id="description" name="description" placeholder="Description" ng-model="new.description" />
-
-                <input type="text" id="street" name="street" placeholder="Street name" ng-model="new.street" />
-                <input type="text" id="number" name="number" placeholder="Number" ng-model="new.number" />
-                <input type="text" id="neighbourhood" name="neighbourhood" placeholder="Neighbourhood" ng-model="new.neighbourhood" />
-                <input type="text" id="city" name="city" placeholder="City" ng-model="new.city" />
-                <input type="text" id="state" name="state" placeholder="State" ng-model="new.state" />
-                <input type="text" id="country" name="country" placeholder="Country" ng-model="new.country" />
-
-                <input type="email" id="email" name="email" placeholder="E-mail" ng-model="new.email" />
-                <input type="text" id="phone1" name="phone1" placeholder="Phone number" ng-model="new.phone1" />
-
-                <input type="text" id="instrument" name="instrument" placeholder="Instrument" ng-model="new.instrument" />
-                <input type="text" id="desired_styles" name="desired_styles" placeholder="What styles you wanna play" ng-model="new.desired_styles" />
-                <input type="text" id="undesired_styles" name="undesired_styles" placeholder="What styles you DONT wanna play" ng-model="new.undesired_styles" />
-
-                <!--<select form="create_form" name="interest" id="interest" ng-model="new.interest">
-                    <option value="casual">Tocar casualmente</option>
-                    <option value="band">Tocar numa banda</option>
-                    <option value="whatever">Tanto faz</option>
-                </select>-->
-
-                <input type="text" id="interest" name="interest" placeholder="Banda ou casual?" ng-model="new.interest" />
-
-                <input type="text" id="passwd" name="passwd" placeholder="Pass" ng-model="new.passwd" />
-            </form>
+            <div class="row">
+                <div class="col s12">
+                    <form id="create_form" ng-submit="newAds()"></form>
+                    <div class="input-field col s4">
+                        <input id="title" type="text" name="title" form="create_form" class="validate" maxlength="60" ng-model="new.title" required>
+                        <label for="title">Título do seu anúncio</label>
+                    </div>
+                    <div class="input-field col s8">
+                        <input id="description" type="text" name="description" class="validate"
+                                  ng-model="new.description" form="create_form" required>
+                        <label for="description">Fale um pouco mais sobre o que você procura</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="desired_styles" type="text" name="desired_styles" form="create_form" class="validate" ng-model="new.desired_styles" required>
+                        <label for="desired_styles">Estilos que você gostaria de tocar</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="undesired_styles" type="text" name="undesired_styles" form="create_form" class="validate" ng-model="new.undesired_styles" required>
+                        <label for="undesired_styles">Estilos que você não gostaria de tocar</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="instrument" type="text" name="instrument" form="create_form" class="validate" ng-model="new.instrument" required>
+                        <label for="instrument">Instrumentos que você toca</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="passwd" type="password" name="passwd" form="create_form" class="validate" ng-model="new.passwd" required>
+                        <label for="passwd">Palavra-passe (pra encerrar o anúncio depois)</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="author" type="text" name="author" form="create_form" class="validate" maxlength="60" ng-model="new.author" required>
+                        <label for="author">Seu nome</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="email" type="email" name="email" class="validate"
+                               ng-model="new.email" form="create_form" required>
+                        <label for="email">Seu e-mail</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="phone1" type="text" name="phone1" class="validate"
+                               ng-model="new.phone1" form="create_form" required>
+                        <label for="phone1">Telefone</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="facebook" type="text" name="facebook" class="validate"
+                               ng-model="new.facebook" form="create_form">
+                        <label for="facebook">Facebook</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="street" type="text" name="street" form="create_form" class="validate" ng-model="new.street" required>
+                        <label for="street">Rua</label>
+                    </div>
+                    <div class="input-field col s1">
+                        <input id="number" type="text" name="number" form="create_form" class="validate" ng-model="new.number" required>
+                        <label for="number">No.</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="neighbourhood" type="text" name="neighbourhood" form="create_form" class="validate" ng-model="new.neighbourhood" required>
+                        <label for="neighbourhood">Bairro</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="city" type="text" name="city" form="create_form" class="validate" ng-model="new.city" required>
+                        <label for="city">Cidade</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="state" type="text" name="state" form="create_form" class="validate" ng-model="new.state" required>
+                        <label for="state">Estado</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input class="with-gap" name="interest" type="radio" id="banda" value="banda" form="create_form" ng-model="new.interest" required />
+                        <label for="banda">Procuro uma banda</label>
+                        <input class="with-gap" name="interest" type="radio" id="casual" value="casual" form="create_form" ng-model="new.interest" required />
+                        <label for="casual">Só quero tocar casualmente</label>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
-        <input class="btn modal-action modal-close" type="submit" form="create_form" value="Send" id="send" />
-        <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>-->
+        <input class="btn" type="submit" form="create_form" value="Publicar anúncio" id="send" />
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
     </div>
+
 </div>

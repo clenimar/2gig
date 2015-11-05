@@ -11,6 +11,17 @@
                 $scope.noAd = ($scope.content).isEmpty;
             };
 
+            $scope.countSuccesses = function() {
+                $http.get('/api/ads/closed')
+                    .success(function(data) {
+                        $scope.successCount = data.count;
+                    })
+                    .error(function() {
+                        console.log("Coudn't retrieve success count...")
+                    })
+            };
+            $scope.countSuccesses();
+
             $scope.getAds = function() {
                 $http.get('/api/ads')
                     .success(function(data) {

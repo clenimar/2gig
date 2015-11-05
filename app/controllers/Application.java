@@ -15,29 +15,48 @@ public class Application extends Controller {
 
     private static final GenericDAO db = new GenericDAO();
 
-    public Result index() {
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("name", "Clenimar");
-        map.put("age", "18");
-        map.put("motto", "Lifes good");
+    /**
+     * Return all the active advertisements
+     */
+    @play.db.jpa.Transactional
+    public Result getActiveAds() {
+        List<Ad> queryResult = db.findByAttributeName("Ad", "closed", "false");
+        HashMap<String, Ad> map = new HashMap<>();
+        if (queryResult == null)
+            return ok(Json.toJson(map));
+
+        for (Ad ad : queryResult)
+            map.put(String.valueOf(ad.getId()), ad);
 
         return ok(Json.toJson(map));
     }
 
     /**
-     * Return all the advertisements
+     * Return how many closed advertisements there are in DB
      */
     @play.db.jpa.Transactional
-    public Result getAds() {
-        List<Ad> queryResult = db.findAllByClass(Ad.class);
-        HashMap<String, Ad> map = new HashMap<>();
-        if (queryResult == null) {
+    public Result getCountClosed(){
+        List<Ad> queryResult = db.findByAttributeName("Ad", "closed", "true");
+        HashMap<String, String> map = new HashMap<>();
+        if (queryResult == null)
             return ok(Json.toJson(map));
-        }
-        for (Ad ad : queryResult) {
-            map.put(String.valueOf(ad.getId()), ad);
-        }
+
+        map.put("count", String.valueOf(queryResult.size()));
+
         return ok(Json.toJson(map));
+    }
+
+    /**
+     * Return an Ad specified by :id parameter
+     */
+    @play.db.jpa.Transactional
+    public Ad getAds(long id) {
+        List<Ad> queryResult = db.findByAttributeName("Ad", "id", String.valueOf(id));
+        if (queryResult.size() > 1 || queryResult.size() < 0) {
+            return null;
+        }
+
+        return queryResult.get(0);
     }
 
     /**
@@ -58,7 +77,6 @@ public class Application extends Controller {
         String neighbourhood = json.get("neighbourhood").asText();
         String city = json.get("city").asText();
         String state = json.get("state").asText();
-        String country = json.get("country").asText();
         String email = json.get("email").asText();
         String phone = json.get("phone1").asText();
 
@@ -81,7 +99,7 @@ public class Application extends Controller {
         String passwd = DigestUtils.sha1Hex(json.get("passwd").asText());
 
         Ad ad = new Ad(author, title, description, street, number, neighbourhood,
-                city, state, country, email, phone, instruments,
+                city, state,  email, phone, instruments,
                 desiredStyles, undesiredStyles, interest, passwd);
 
         if (db.persist(ad)) {
@@ -90,6 +108,24 @@ public class Application extends Controller {
         }
 
         return internalServerError();
+    }
+
+    /**
+     * Close an advertisement
+     */
+    @play.db.jpa.Transactional
+    public Result closeAds(long id) {
+        List<Ad> queryResult = db.findByAttributeName("Ad", "id", String.valueOf(id));
+        int size = queryResult.size();
+        if (size == 1) {
+            Ad ad = queryResult.get(0);
+            // check pass
+            ad.close();
+            db.persist(ad);
+            db.flush();
+            return created(successMsg(CREATED));
+        }
+        return badRequest();
     }
 
     private JsonNode successMsg(int status) {

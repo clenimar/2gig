@@ -51,7 +51,7 @@
                     </div>
                     <div class="card-action">
                         <a class="modal-trigger" data-target="newAd">Ver mais</a>
-                        <span class="right white-text">postado por {{ad.author}} há 23 minutos</span>
+                        <span class="right white-text">postado por {{ad.author}} {{calculateTimeString(ad.when)}}</span>
                     </div>
                 </div>
             </div>
@@ -97,6 +97,7 @@
     <script src= "/assets/javascripts/external/angular-route.js" type="text/javascript"></script>
     <script src="/assets/javascripts/external/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="/assets/javascripts/external/materialize.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/external/moment-with-locales.min.js" type="text/javascript"></script>
     <script src="/assets/javascripts/app.js" type="text/javascript"></script>
     <script src="/assets/javascripts/controllers/main.js" type="text/javascript"></script>
     <script src="/assets/javascripts/controllers/new.js" type="text/javascript"></script>

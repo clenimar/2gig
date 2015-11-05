@@ -35,6 +35,11 @@
             };
             $scope.getAds();
 
+            $scope.calculateTimeString = function(timestamp) {
+                moment.locale('pt-BR');
+                return moment(timestamp).fromNow();
+            };
+
             var self = this;
 
             self.ad = {};

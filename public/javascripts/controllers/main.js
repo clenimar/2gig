@@ -6,6 +6,7 @@
         .controller('MainCtrl', function($scope, $http) {
             $scope.noAdFoundMessage = "Nenhum anúncio para exibir.";
             $scope.noAd = false;
+            $scope.query = "";
 
             var noAdCheck = function() {
                 $scope.noAd = ($scope.content).isEmpty;

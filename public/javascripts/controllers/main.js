@@ -5,12 +5,7 @@
         .module('2GIG')
         .controller('MainCtrl', function($scope, $http) {
             $scope.noAdFoundMessage = "Nenhum anúncio para exibir.";
-            $scope.noAd = false;
             $scope.query = "";
-
-            var noAdCheck = function() {
-                $scope.noAd = ($scope.content).isEmpty;
-            };
 
             $scope.countSuccesses = function() {
                 $http.get('/api/ads/closed')
@@ -27,7 +22,6 @@
                 $http.get('/api/ads')
                     .success(function(data) {
                         $scope.content = data;
-                        noAdCheck();
                     })
                     .error(function() {
                         console.log("error while trying to get content...");
@@ -42,13 +36,10 @@
             };
 
             var self = this;
+            self.current = {};
 
-            self.ad = {};
-            self.setAd = function(ad) {
-                self.ad = ad;
-            };
-            self.cleanAd = function() {
-                self.ad = {};
+            self.setCurrent = function(ad) {
+                
             }
         })
 })();

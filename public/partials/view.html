@@ -1,5 +1,56 @@
 <div class="col s8 offset-s2">
-    {{current}}
+    <div class="row">
+        <div class="col s12 center">
+            <h4>{{current.title}}</h4>
+            <p><i>postado por {{current.author}} {{calculateTimeString(current.when)}}</i></p>
+            <div class="row">
+                <h5>{{current.description}}</h5>
+            </div>
+        </div>
+
+        <div class="col s4">
+        <h5><i class="material-icons">room</i> Onde:</h5> 
+            <p>{{current.street}}, {{current.number}}, {{current.neighbourhood}}, {{current.city}}, {{current.state}}</p>
+        <span ng-show="current.email">
+        <h5><i class="material-icons">email</i> E-mail:</h5>
+            <p>{{current.email}}</p>
+        </span>
+        <span ng-show="current.phone">
+        <h5><i class="material-icons">phone</i> Telefone:</h5>
+            <p>{{current.phone}}</p>
+        </span>
+        <span ng-show="current.facebook">
+        <h5><i class="material-icons">person_pin</i> Facebook:</h5>
+            <p>{{current.facebook}}</p>
+        </span>
+        </div>
+
+
+        <div class="col s4">
+            <h5><i class="material-icons">my_location</i> Interesse:</h5>
+            <p>{{current.interest}}
+            <h5><i class="material-icons">music_note</i> Instrumentos:</h5> 
+            <p>{{current.instruments}}</p>
+
+            <span ng-show="current.desired_styles">
+            <h5><i class="material-icons">thumbs_up</i> Estilos que quero tocar:</h5> 
+            <p>{{current.desired_styles}}</p>
+            </span>
+
+            <span ng-show="current.undesired_styles">
+            <h5><i class="material-icons">thumbs_down</i> Estilos que não quero tocar:</h5> 
+            <p>{{current.undesired_styles}}</p>
+            </span>
+        </div>
+
+        <div class="col s4">
+            <h5><i class="material-icons">play_arrow</i> Vídeos: </h5>
+            <p>{{noVideoMessage}}</p>
+            <h5><i class="material-icons">comment</i> Comentários:</h5>
+            <p>{{noCommentMessage}}</p>
+        </div>
+    
+    </div>
 </div>
 
 <!-- Fixed Add Button -->

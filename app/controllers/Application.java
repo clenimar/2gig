@@ -122,7 +122,7 @@ public class Application extends Controller {
         int size = queryResult.size();
         if (size == 1) {
             Ad ad = queryResult.get(0);
-            // check pass
+            //check pass
             ad.close();
             db.persist(ad);
             db.flush();

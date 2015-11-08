@@ -9,26 +9,26 @@
         </div>
 
         <div class="col s4">
-        <h5><i class="material-icons">room</i> Onde:</h5> 
-            <p>{{current.street}}, {{current.number}}, {{current.neighbourhood}}, {{current.city}}, {{current.state}}</p>
-        <span ng-show="current.email">
-        <h5><i class="material-icons">email</i> E-mail:</h5>
-            <p>{{current.email}}</p>
-        </span>
-        <span ng-show="current.phone">
-        <h5><i class="material-icons">phone</i> Telefone:</h5>
-            <p>{{current.phone}}</p>
-        </span>
-        <span ng-show="current.facebook">
-        <h5><i class="material-icons">person_pin</i> Facebook:</h5>
-            <p>{{current.facebook}}</p>
-        </span>
+            <h5><i class="material-icons">room</i> Onde:</h5> 
+                <p>{{current.street}}, {{current.number}}, {{current.neighbourhood}}, {{current.city}}, {{current.state}}</p>
+            <span ng-show="current.email">
+            <h5><i class="material-icons">email</i> E-mail:</h5>
+                <p>{{current.email}}</p>
+            </span>
+            <span ng-show="current.phone">
+            <h5><i class="material-icons">phone</i> Telefone:</h5>
+                <p>{{current.phone}}</p>
+            </span>
+            <span ng-show="current.facebook">
+            <h5><i class="material-icons">person_pin</i> Facebook:</h5>
+                <p>{{current.facebook}}</p>
+            </span>
         </div>
 
 
         <div class="col s4">
             <h5><i class="material-icons">my_location</i> Interesse:</h5>
-            <p>{{current.interest}}
+            <p>{{current.interest}}</p>
             <h5><i class="material-icons">music_note</i> Instrumentos:</h5> 
             <p>{{current.instruments}}</p>
 
@@ -49,9 +49,36 @@
             <h5><i class="material-icons">comment</i> Comentários:</h5>
             <p>{{noCommentMessage}}</p>
         </div>
-    
     </div>
-</div>
+
+    <div class="row center">
+        <a href="#/" class="btn waves-effect waves-light">Voltar</a>
+        <a class="waves-effect waves-light btn" ng-click="show()">Finalizar anúncio</a>
+    </div>
+    <div ng-show="showForm">
+    <span class="center">
+    <h6>Seu anúncio foi útil?</h6>
+
+    <p>
+      <input name="feedback" type="radio" id="yes" value="yes" ng-model="data.feedback" />
+      <label for="yes">Sim</label>
+    </p>
+    <p>
+      <input name="feedback" type="radio" id="no" value="no" ng-model="data.feedback" />
+      <label for="no" value="no">Não</label>
+    </p>
+
+    </span>
+    <div class="row center">
+        <div class="input-field col s6 offset-s3">
+          <input id="pass" type="password" class="validate" ng-model="pass.pass">
+          <label for="pass">Digite a palavra-passe do anúncio</label>
+        </div>
+    </div>
+    <div class="row center">
+        <a class="waves-effect waves-light btn red" ng-click="closeAds()">Confirmar exclusão do anúncio "{{current.title}}"</a>
+    </div>
+    </div>
 
 <!-- Fixed Add Button -->
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">

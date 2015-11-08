@@ -17,6 +17,11 @@
                     url: '/new',
                     templateUrl: '/assets/partials/new.html',
                     controller: 'NewAdCtrl'
+                })
+                .state('view', {
+                    url: '/view/:id',
+                    templateUrl: '/assets/partials/view.html',
+                    controller: 'ViewAdCtrl'
                 });
 
             $urlRouterProvider

@@ -82,10 +82,10 @@ public class Application extends Controller {
         if (json == null)
             return badRequest();
 
-        List<String> desiredStyles = new ArrayList<>();
-        List<String> undesiredStyles = new ArrayList<>();
-        List<String> instruments = new ArrayList<>();
         HashMap<String, String> contact = new HashMap<>();
+        HashMap<String, String> stylePreferences = new HashMap<>();
+        stylePreferences.put("desired_styles", "");
+        stylePreferences.put("undesired_styles", "");
 
         String author = json.get("author").asText();
         String title = json.get("title").asText();
@@ -105,18 +105,13 @@ public class Application extends Controller {
         if (json.has("facebook"))
             contact.put("facebook", json.get("facebook").asText());
 
-        for (String instrument : json.get("instrument").asText().split(","))
-            instruments.add(instrument);
+        String instruments = json.get("instrument").asText();
 
-        if (json.has("desired_styles")) {
-            for (String style : json.get("desired_styles").asText().split(","))
-                desiredStyles.add(style);
-        }
+        if (json.has("desired_styles"))
+             stylePreferences.put("desired_styles", json.get("desired_styles").asText());
 
-        if (json.has("undesired_styles")) {
-            for (String style : json.get("undesired_styles").asText().split(","))
-                undesiredStyles.add(style);
-        }
+        if (json.has("undesired_styles"))
+            stylePreferences.put("undesired_styles", json.get("undesired_styles").asText());
 
         String interest = json.get("interest").asText();
         String passwd = DigestUtils.sha1Hex(json.get("passwd").asText());
@@ -126,7 +121,7 @@ public class Application extends Controller {
 
         Ad ad = new Ad(author, title, description, street, number, neighbourhood,
                 city, state, contact, instruments,
-                desiredStyles, undesiredStyles, interest, passwd);
+                stylePreferences.get("desired_styles"), stylePreferences.get("undesired_styles"), interest, passwd);
 
         if (db.persist(ad)) {
             db.flush();

@@ -27,12 +27,9 @@ public class Ad {
     private String facebook;
     private String phone;
     // misc:
-    @ElementCollection
-    private List<String> instruments;
-    @ElementCollection
-    private List<String> desiredStyles;
-    @ElementCollection
-    private List<String> undesiredStyles;
+    private String instruments;
+    private String desiredStyles;
+    private String undesiredStyles;
     // security:
     private String passwd;
     // status:
@@ -43,7 +40,7 @@ public class Ad {
 
     public Ad(String author, String title, String description, String street, String number, String neighbourhood,
               String city, String state, HashMap<String, String> contact,
-              List<String> instruments, List<String> desiredStyles, List<String> undesiredStyles,
+              String instruments, String desiredStyles, String undesiredStyles,
               String interest, String passwd) {
         this();
         this.author = author;
@@ -89,11 +86,11 @@ public class Ad {
         this.title = title;
     }
 
-    public List<String> getInstruments() {
+    public String getInstruments() {
         return instruments;
     }
 
-    public void setInstruments(List<String> instruments) {
+    public void setInstruments(String instruments) {
         this.instruments = instruments;
     }
 
@@ -105,19 +102,19 @@ public class Ad {
         this.description = description;
     }
 
-    public List<String> getDesiredStyles() {
+    public String getDesiredStyles() {
         return desiredStyles;
     }
 
-    public void setDesiredStyles(List<String> desiredStyles) {
+    public void setDesiredStyles(String desiredStyles) {
         this.desiredStyles = desiredStyles;
     }
 
-    public List<String> getUndesiredStyles() {
+    public String getUndesiredStyles() {
         return undesiredStyles;
     }
 
-    public void setUndesiredStyles(List<String> undesiredStyles) {
+    public void setUndesiredStyles(String undesiredStyles) {
         this.undesiredStyles = undesiredStyles;
     }
 

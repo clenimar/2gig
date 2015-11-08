@@ -63,13 +63,13 @@ public class Application extends Controller {
      * Return an Ad specified by :id parameter
      */
     @play.db.jpa.Transactional
-    public Ad getAds(long id) {
+    public Result getAds(long id) {
         List<Ad> queryResult = db.findByAttributeName("Ad", "id", String.valueOf(id));
         if (queryResult.size() > 1 || queryResult.size() < 0) {
             return null;
         }
 
-        return queryResult.get(0);
+        return ok(Json.toJson(queryResult));
     }
 
     /**

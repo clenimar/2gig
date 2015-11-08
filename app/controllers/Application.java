@@ -122,8 +122,16 @@ public class Application extends Controller {
         int size = queryResult.size();
         if (size == 1) {
             Ad ad = queryResult.get(0);
-            //check pass
-            ad.close();
+            JsonNode data = request().body().asJson();
+
+            if (data.has("pass") && data.has("feedback")) {
+                if (ad.checkPassword(data.get("pass").asText()))
+                    ad.close();
+                else
+                    return unauthorized();
+                ad.setFeedback(data.get("feedback").asText());
+            }
+
             db.persist(ad);
             db.flush();
             return created(successMsg(CREATED));

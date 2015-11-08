@@ -41,6 +41,7 @@
                     .error(function() {
                         console.log("Error.");
                         Materialize.toast("Palavra-passe incorreta.", 4000);
+                        $scope.data = {};
                     });
             };
 

@@ -1,5 +1,7 @@
 package models;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,6 +36,7 @@ public class Ad {
     private String passwd;
     // status:
     private boolean closed;
+    private String feedback;
 
     public Ad(){
     }
@@ -58,6 +61,7 @@ public class Ad {
         this.state = state;
         this.when = Calendar.getInstance().getTimeInMillis();
         this.closed = false;
+        this.feedback = "";
         setContact(contact);
     }
 
@@ -220,5 +224,17 @@ public class Ad {
 
     public void close() {
         this.closed = true;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
+    public boolean checkPassword(String p) {
+        return DigestUtils.sha1Hex(p).equals(this.getPasswd());
     }
 }

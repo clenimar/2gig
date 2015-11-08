@@ -4,6 +4,7 @@
     angular
         .module('2GIG')
         .controller('NewAdCtrl', function($scope, $http, $window) {
+            $scope.pageClass = 'new';
             $scope.new = {};
 
             $scope.newAds = function() {
@@ -12,7 +13,7 @@
                         Materialize.toast("Anúncio criado com sucesso :)", 4000);
                         console.log("deu certo, moral!");
                         $scope.new = {};
-                        $window.location = '/';
+                        $window.location = '#/';
                     })
                     .error(function() {
                         console.log("error while trying to post content...");

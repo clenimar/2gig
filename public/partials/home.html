@@ -1,0 +1,32 @@
+<div class="col s8 offset-s2">
+    <div class="row center">
+        <h5>Atrás de gente pra fazer um som? Anuncie gratuitamente e encontre parceiros para tocar!
+            <span ng-hide="successCount"><b>Já são mais de {{successCount}} gigs bem sucedidos.</b></span>
+        </h5>
+    </div>
+    <div class="col s6" ng-repeat="ad in queryResult = (content | filter: query) | orderBy: '-when'">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">{{ad.title}}
+                    <interest-icon></interest-icon>
+                </span>
+                <p style="font-size: 1.15em; font-style: italic;">{{ad.description}}</p>
+                <p>Instrumentos: {{ad.instruments}}</p>
+                <p>Endereço: {{ad.neighbourhood}}, {{ad.city}}, {{ad.state}}</p>
+                <p></p>
+            </div>
+            <div class="card-action">
+                <a href="#/view/{{ad.id}}">Ver mais</a>
+                <span class="right white-text">postado por {{ad.author}} {{calculateTimeString(ad.when)}}</span>
+            </div>
+        </div>
+    </div>
+    <p ng-hide="queryResult.length" class="center">Nenhum anúncio para exibir.</p>
+</div>
+
+<!-- Fixed Add Button -->
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a href="#new" class="btn-floating btn-large red tooltipped" data-position="left" data-delay="50" data-tooltip="Anuncie agora!">
+        <i class="material-icons">add</i>
+    </a>
+</div>

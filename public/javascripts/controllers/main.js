@@ -3,9 +3,10 @@
 
     angular
         .module('2GIG')
-        .controller('MainCtrl', function($scope, $http) {
+        .controller('MainCtrl', function($scope, $rootScope, $http, $window) {
             $scope.noAdFoundMessage = "Nenhum anúncio para exibir.";
-            $scope.query = "";
+            $scope.pageClass = "home";
+            $rootScope.query = "";
 
             $scope.countSuccesses = function() {
                 $http.get('/api/ads/closed')

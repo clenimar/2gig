@@ -3,24 +3,23 @@
 
     angular
         .module('2GIG', [
-            'ngRoute'
+            'ui.router'
         ])
-        .config(function($routeProvider) {
-            $routeProvider
-                .when('/', {
-                    templateUrl: '../index.html',
-                    controller: 'MainCtrl'
+        .config(function($stateProvider, $urlRouterProvider) {
+            $stateProvider
+                .state('home', {
+                    url: '/',
+                    templateUrl: '/assets/partials/home.html',
+                    controller: 'MainCtrl',
+                    controllerAs: 'main'
                 })
-                .when('/new', {
-                    tempalteUrl: '../new.html',
+                .state('new', {
+                    url: '/new',
+                    templateUrl: '/assets/partials/new.html',
                     controller: 'NewAdCtrl'
-                })
-                .when('/view/:adId', {
-                    templateUrl: '../view.html',
-                    controller: 'ViewAdCtrl'
-                })
-                .otherwise({
-                    redirectTo: '/'
                 });
+
+            $urlRouterProvider
+                .otherwise('/');
         })
 })();

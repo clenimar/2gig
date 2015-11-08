@@ -31,7 +31,7 @@ public class Application extends Controller {
      */
     @play.db.jpa.Transactional
     public Result getCountClosed(){
-        List<Ad> queryResult = db.findByAttributeName("Ad", "closed", "true");
+        List<Ad> queryResult = db.findByAttributeName("Ad", "feedback", "yes");
         HashMap<String, String> map = new HashMap<>();
         if (queryResult == null)
             return ok(Json.toJson(map));

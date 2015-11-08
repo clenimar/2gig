@@ -5,8 +5,6 @@ import models.Ad;
 import org.apache.commons.codec.digest.DigestUtils;
 import play.libs.Json;
 import play.mvc.*;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import models.dao.GenericDAO;
@@ -14,22 +12,6 @@ import models.dao.GenericDAO;
 public class Application extends Controller {
 
     private static final GenericDAO db = new GenericDAO();
-
-//    /**
-//     * Return all the active advertisements
-//     */
-//    @play.db.jpa.Transactional
-//    public Result getActiveAds() {
-//        List<Ad> queryResult = db.findByAttributeName("Ad", "closed", "false");
-//        HashMap<String, Ad> map = new HashMap<>();
-//        if (queryResult == null)
-//            return ok(Json.toJson(map));
-//
-//        for (Ad ad : queryResult)
-//            map.put(String.valueOf(ad.getId()), ad);
-//
-//        return ok(Json.toJson(map));
-//    }
 
     /**
      * Return all the active advertisements

@@ -5,10 +5,12 @@
         .module('2GIG')
         .controller('ViewAdCtrl', function($scope, $http, $stateParams, $window) {
             var currentId = $stateParams.id;
+            var commentId = "";
             $scope.current = {};
             $scope.noCommentMessage = "Sem comentários para exibir.";
             $scope.noVideoMessage = "Sem vídeos para exibir.";
             $scope.showForm = false;
+            $scope.showRemove = false;
             $scope.data = {
                 "pass": "",
                 "feedback": ""
@@ -19,10 +21,15 @@
             $scope.newComment = {
                 "content" : ""
             };
-
             $scope.show = function() {
                 $scope.showForm = true;
             };
+            $scope.showRemoveComment = function(id) {
+                $scope.showRemove = true;
+                console.log(id);
+                commentId = id;
+            };
+
 
             $scope.getCurrent = function() {
                 console.log(currentId);
@@ -66,14 +73,25 @@
                     });
             };
 
-            $scope.removeComment = function(commentId) {
+            $scope.removeComment = function() {
+
                 $http.post('/api/ads/' + currentId + '/comment/' + commentId, $scope.commentPass)
                     .success(function() {
                         Materialize.toast("Comentário removido.", 4000);
+                        $scope.commentPass = {
+                            "pass" : ""
+                        };
                         $scope.getCurrent();
+                        commentId = "";
+                        $scope.showRemove = false;
                     })
                     .error(function () {
                         Materialize.toast("Palavra-passe incorreta.", 4000);
+                        $scope.commentPass = {
+                            "pass" : ""
+                        };
+                        commentId = "";
+                        $scope.showRemove = false;
                     });
             };
 

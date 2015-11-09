@@ -162,7 +162,33 @@ public class Application extends Controller {
         return internalServerError();
     }
 
-    
+    /**
+     * Remove a comment
+     */
+    @play.db.jpa.Transactional
+    public Result removeComment(long adId, long commentId) {
+        List<Ad> adQuery = db.findByAttributeName("Ad", "id", String.valueOf(adId));
+        List<Comment> commentQuery = db.findByAttributeName("Comment", "id", String.valueOf(commentId));
+
+        if (adQuery.isEmpty() || commentQuery.isEmpty()) return badRequest();
+
+        JsonNode data = request().body().asJson();
+
+        Ad ad = adQuery.get(0);
+        Comment comment = commentQuery.get(0);
+
+        if (!data.has("pass")) return badRequest();
+
+        if (ad.checkPassword(data.get("pass").asText())) {
+            ad.removeComment(comment);
+            db.removeById(Comment.class, commentId);
+            db.persist(ad);
+            db.flush();
+            return created(Json.toJson(successMsg(CREATED)));
+        }
+
+        return unauthorized();
+    }
 
     private JsonNode successMsg(int status) {
         HashMap<String, String> map = new HashMap<>();

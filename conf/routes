@@ -8,6 +8,7 @@ GET        /                    controllers.Assets.at(path="/public", file="inde
 # RESTful API:
 POST       /api/ads/closed/:id  controllers.Application.closeAds(id: Long)
 POST       /api/ads/:id/comment controllers.Application.addComment(id: Long)
+POST     /api/ads/:adId/comment/:commentId    controllers.Application.removeComment(adId: Long, commentId: Long)
 GET        /api/ads/closed      controllers.Application.getCountClosed()
 GET        /api/ads             controllers.Application.getActiveAds()
 GET        /api/ads/:id         controllers.Application.getAds(id: Long)

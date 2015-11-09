@@ -255,4 +255,8 @@ public class Ad {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    public boolean removeComment(Comment comment) {
+        return this.comments.remove(comment);
+    }
 }

@@ -52,7 +52,8 @@
             <span ng-hide="current.comments.length">{{noCommentMessage}}</span>
 
             <blockquote ng-repeat="comment in current.comments">
-                {{comment.content}} - <span style="font-size:0.7em;">{{calculateTimeString(comment.when)}}</span>
+                {{comment.content}} - <span style="font-size:0.7em;">{{calculateTimeString(comment.when)}}
+                    - <a ng-click="removeComment(comment.id)">remover</a></span>
             </blockquote>
             <form id="add_comment" ng-submit="addComment()">
             <p><input type="text" name="comment" ng-model="newComment.content" placeholder="Escreva um comentário" /></p>

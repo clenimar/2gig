@@ -13,6 +13,9 @@
                 "pass": "",
                 "feedback": ""
             };
+            $scope.commentPass = {
+                "pass" : ""
+            };
             $scope.newComment = {
                 "content" : ""
             };
@@ -60,6 +63,17 @@
 
                     }).error(function() {
                         Materialize.toast("Algo deu errado. Tente novamente.", 4000);
+                    });
+            };
+
+            $scope.removeComment = function(commentId) {
+                $http.post('/api/ads/' + currentId + '/comment/' + commentId, $scope.commentPass)
+                    .success(function() {
+                        Materialize.toast("Comentário removido.", 4000);
+                        $scope.getCurrent();
+                    })
+                    .error(function () {
+                        Materialize.toast("Palavra-passe incorreta.", 4000);
                     });
             };
 

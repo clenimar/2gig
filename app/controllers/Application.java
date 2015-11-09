@@ -2,6 +2,7 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Ad;
+import models.Comment;
 import org.apache.commons.codec.digest.DigestUtils;
 import play.libs.Json;
 import play.mvc.*;
@@ -138,6 +139,30 @@ public class Application extends Controller {
         }
         return badRequest();
     }
+
+    /**
+     * Add a comment
+     */
+    @play.db.jpa.Transactional
+    public Result addComment(long adId) {
+        List<Ad> queryResult = db.findByAttributeName("Ad", "id", String.valueOf(adId));
+        if (queryResult.isEmpty()) return badRequest();
+        Ad ad = queryResult.get(0);
+
+        JsonNode data = request().body().asJson();
+        if (!data.has("content")) return badRequest();
+        Comment comment = new Comment(data.get("content").asText());
+        db.persist(comment);
+        if (ad.addComent(comment)) {
+            db.persist(ad);
+            db.flush();
+            return created(Json.toJson(successMsg(CREATED)));
+        }
+
+        return internalServerError();
+    }
+
+    
 
     private JsonNode successMsg(int status) {
         HashMap<String, String> map = new HashMap<>();

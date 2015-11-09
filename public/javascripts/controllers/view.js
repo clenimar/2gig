@@ -5,7 +5,7 @@
         .module('2GIG')
         .controller('ViewAdCtrl', function($scope, $http, $stateParams, $window) {
             var currentId = $stateParams.id;
-            $scope.current = {};  
+            $scope.current = {};
             $scope.noCommentMessage = "Sem comentários para exibir.";
             $scope.noVideoMessage = "Sem vídeos para exibir.";
             $scope.showForm = false;
@@ -13,10 +13,13 @@
                 "pass": "",
                 "feedback": ""
             };
+            $scope.newComment = {
+                "content" : ""
+            };
 
             $scope.show = function() {
                 $scope.showForm = true;
-            }
+            };
 
             $scope.getCurrent = function() {
                 console.log(currentId);
@@ -28,7 +31,7 @@
                     .error(function () {
                         console.log("Coudn't get Ad #" + currentId);
                     });
-            }
+            };
             $scope.getCurrent();
 
             $scope.closeAds = function() {
@@ -42,6 +45,21 @@
                         console.log("Error.");
                         Materialize.toast("Palavra-passe incorreta.", 4000);
                         $scope.data = {};
+                    });
+            };
+
+            $scope.addComment = function() {
+                $http.post('/api/ads/' + currentId + '/comment', $scope.newComment)
+                    .success(function() {
+                        console.log("Comment published.");
+                        $scope.newComment = {
+                            "content" : ""
+                        };
+                        Materialize.toast("Comentário postado.", 4000);
+                        $scope.getCurrent();
+
+                    }).error(function() {
+                        Materialize.toast("Algo deu errado. Tente novamente.", 4000);
                     });
             };
 

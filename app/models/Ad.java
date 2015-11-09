@@ -3,6 +3,8 @@ package models;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +39,9 @@ public class Ad {
     // status:
     private boolean closed;
     private String feedback;
+    // comments:
+    @OneToMany
+    private List<Comment> comments;
 
     public Ad(){
     }
@@ -62,6 +67,7 @@ public class Ad {
         this.when = Calendar.getInstance().getTimeInMillis();
         this.closed = false;
         this.feedback = "";
+        this.comments = new ArrayList<>();
         setContact(contact);
     }
 
@@ -236,5 +242,17 @@ public class Ad {
 
     public boolean checkPassword(String p) {
         return DigestUtils.sha1Hex(p).equals(this.getPasswd());
+    }
+
+    public boolean addComent(Comment comment) {
+        return this.comments.add(comment);
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

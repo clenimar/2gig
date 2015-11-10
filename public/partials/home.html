@@ -1,7 +1,7 @@
 <div class="col s8 offset-s2">
     <div class="row center">
         <h5>Atrás de gente pra fazer um som? Anuncie gratuitamente e encontre parceiros para tocar!
-            <span ng-hide="successCount.isEmpty"><b>Já são mais de {{successCount}} gigs bem sucedidos.</b></span>
+            <span ng-hide="successCount <= 1"><b>Já são mais de {{successCount}} gigs bem sucedidos.</b></span>
         </h5>
     </div>
     <div class="col s6" ng-repeat="ad in queryResult = (content | filter: query) | orderBy: '-when'">
